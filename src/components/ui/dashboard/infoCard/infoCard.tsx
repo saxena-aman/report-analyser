@@ -15,7 +15,7 @@ import { BsStars } from "react-icons/bs";
 import { RiMentalHealthLine } from "react-icons/ri";
 import { FiFileText } from "react-icons/fi";
 import { LuHelpingHand } from "react-icons/lu";
-import { PiDotOutlineBold } from "react-icons/pi";
+import { FaHandsHelping } from "react-icons/fa";
 type CardProps = React.ComponentProps<typeof Card>;
 function InfoCard({ className, ...props }: CardProps) {
   interface Features {
@@ -99,7 +99,7 @@ function InfoCard({ className, ...props }: CardProps) {
             "flex items-center gap-3 font-light text-base ml-5 my-3 w-11/12 capitalize"
           )}
         >
-          <PiDotOutlineBold className={cn("text-[100px] md:text-[48px]")} />
+          <FaHandsHelping className={cn("text-[100px] md:text-[32px]")} />
           Navigating your health reports is now as easy as reading a book.
           Martin translates medical information into simple, actionable
           insights, empowering you to take charge of your well-being with
