@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import "./uploadFileCard.css";
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -28,11 +29,21 @@ type CardProps = React.ComponentProps<typeof Card>;
 function UploadFileCard({ className, ...props }: CardProps) {
   const { toast } = useToast();
   const [name, setName] = useState<string>("");
+  const [age, setAge] = useState<number>();
   const [gender, setGender] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
+  };
+  const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newAge = parseInt(event.target.value, 10);
+
+    if (!isNaN(newAge)) {
+      setAge(newAge);
+    } else {
+      console.error("Invalid age input");
+    }
   };
   const handleGenderChange = (value: string) => {
     setGender(value);
@@ -56,6 +67,7 @@ function UploadFileCard({ className, ...props }: CardProps) {
       return;
     }
     console.log("Name:", name);
+    console.log("Age:", age);
     console.log("Gender:", gender);
     console.log("Email:", email);
     console.log("File:", file);
@@ -69,15 +81,15 @@ function UploadFileCard({ className, ...props }: CardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className={cn("flex flex-col items-center")}>
-        <div className={cn("flex items-center w-full gap-2")}>
-          <Input
-            type="text"
-            placeholder="Name"
-            value={name}
-            className={cn("w-1/2")}
-            onChange={handleNameChange}
-          />
-          <Select onValueChange={handleGenderChange}>
+        <Input
+          type="text"
+          placeholder="Name"
+          value={name}
+          className={cn("w-full")}
+          onChange={handleNameChange}
+        />
+        <div className={cn("flex items-center w-full gap-2 my-2")}>
+          <Select onValueChange={handleGenderChange} required>
             <SelectTrigger className={cn("w-1/2")}>
               <SelectValue placeholder="Select Gender" />
             </SelectTrigger>
@@ -89,22 +101,29 @@ function UploadFileCard({ className, ...props }: CardProps) {
               </SelectGroup>
             </SelectContent>
           </Select>
+          <Input
+            type="number"
+            placeholder="Age"
+            value={age}
+            className={cn("w-1/2")}
+            onChange={handleAgeChange}
+          />
         </div>
         <Input
           type="email"
           placeholder="Email"
           value={email}
-          className={cn("my-4")}
+          className={cn("mb-2")}
           onChange={handleEmailChange}
         />
         <div className={cn("flex items-center space-x-2")}>
           <TbReportSearch />
-          <Input type="file" onChange={handleFileChange}/>
+          <Input type="file" onChange={handleFileChange} />
         </div>
-      </CardContent>
-      <CardFooter className={cn("flex flex-col w-full")}>
         <div
-          className={cn("flex flex-row space-x-1 items-center text-xs w-full")}
+          className={cn(
+            "flex flex-row space-x-1 items-center text-xs w-full my-2"
+          )}
         >
           <BsExclamationDiamond size={14} className={cn("mr-3")} /> Ensure Your
           Report is in a Supported Format.
@@ -115,14 +134,12 @@ function UploadFileCard({ className, ...props }: CardProps) {
           variant="outline"
           type="submit"
           onClick={handleSubmit}
-          className={cn(
-            "flex flex-row space-x-1 items-center text-xs w-full mt-6"
-          )}
+          className={cn("flex flex-row space-x-1 items-center text-xs w-full")}
         >
           Analyze
           <MdOutlineNavigateNext size={20} />
         </Button>
-      </CardFooter>
+      </CardContent>
     </Card>
   );
 }
