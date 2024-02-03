@@ -44,7 +44,7 @@ function InfoCard({ className, ...props }: CardProps) {
     },
   ];
   return (
-    <Card className={cn("max-w-[1050px] h-full", className)} {...props}>
+    <Card className={cn("max-w-[1000px] h-full", className)} {...props}>
       <CardHeader>
         <CardTitle className={cn("text-5xl w-full capitalize")}>
           Unlocking Your Health Insights with Martin.
@@ -55,14 +55,14 @@ function InfoCard({ className, ...props }: CardProps) {
           Empowering You to Decode Your Health Reports with Precision
         </CardDescription>
       </CardHeader>
-      <CardContent className={cn("text-lg capitalize")}>
+      <CardContent className={cn("text-base capitalize")}>
         <p>
           At EaseReport, We're on a mission to Revolutionize the way you
           interpret and comprehend your health reports. <br />
           Our cutting-edge AI models are designed to unravel the complexities,
           providing you with insights that go beyond numbers and charts.
         </p>
-        <Separator className={cn("my-4 w-11/12 mx-auto")} />
+        <Separator className={cn("my-2 w-11/12 mx-auto")} />
         <p
           className={cn(
             "flex items-center gap-3 font-semibold w-full text-2xl"
@@ -85,7 +85,7 @@ function InfoCard({ className, ...props }: CardProps) {
             </div>
           </div>
         ))}
-        <Separator className={cn("my-4 w-11/12 mx-auto")} />
+        <Separator className={cn("my-2 w-11/12 mx-auto")} />
         <div
           className={cn(
             "flex items-center gap-3 font-semibold w-full text-2xl"

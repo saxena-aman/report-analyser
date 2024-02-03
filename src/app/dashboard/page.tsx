@@ -5,13 +5,13 @@ import MessageCard from "@/components/ui/dashboard/messageCard/messageCard";
 import ProcessCard from "@/components/ui/dashboard/processCard/processCard";
 export default function Dashboard() {
   return (
-    <div className="flex flex-wrap justify-between gap-2">
+    <div className="flex flex-wrap justify-evenly gap-2">
       <InfoCard />
-      <div className="grid content-between gap-2">
+      <div className="grid content-evenly gap-2">
         <UploadFileCard className="w-full" />
-        <MessageCard />
+
         <ProcessCard className="w-full" />
-        {/* <ProcessCard className="w-full" /> */}
+        <MessageCard />
       </div>
     </div>
   );
